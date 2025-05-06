@@ -15,7 +15,10 @@ Modular Architecture: Clean separation of feature extraction, editing pipeline, 
 
 Deployment-Ready: FastAPI-based backend ready for integration with custom frontend.
 
-Tech Stack
-Python, PyTorch, Hugging Face Diffusers, CLIP
+**Output Image**
+Given Input Image :
+![image](https://github.com/user-attachments/assets/50a8e8ba-ad8a-4251-a098-6817a90df76a)
 
-FastAPI (backend), Google Colab (experiments)
+Edited Image :
+![image](https://github.com/user-attachments/assets/c003534a-678e-4eb9-a231-173c85f6c5b7)
+
