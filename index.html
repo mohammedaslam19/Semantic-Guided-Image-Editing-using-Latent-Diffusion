@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ReDEFINE - Image Transformation</title>
+    <link rel="stylesheet" href="/static/styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="app-container">
+        <!-- Intro Screen -->
+        <div id="intro-screen" class="screen active">
+            <div class="intro-content">
+                <h1 class="logo">
+                    <span class="logo-re">Re</span><span class="logo-define">DEFINE</span>
+                </h1>
+                <p class="tagline">Transform your images with AI</p>
+                <button id="start-btn" class="btn primary-btn">Get Started</button>
+            </div>
+        </div>
+
+        <!-- Upload Screen -->
+        <div id="upload-screen" class="screen">
+            <div class="card">
+                <h2>Upload Your Image</h2>
+                <div class="upload-area" id="drop-area">
+                    <input type="file" id="file-input" accept="image/*" hidden>
+                    <div class="upload-content">
+                        <div class="upload-icon">
+                            <svg width="48" height="48" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M12 16V8M12 8L8 12M12 8L16 12" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                <path d="M3 15V16C3 18.2091 4.79086 20 7 20H17C19.2091 20 21 18.2091 21 16V15" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                            </svg>
+                        </div>
+                        <p>Drag and drop your image here<br>or click to browse</p>
+                    </div>
+                </div>
+                <div class="upload-preview-container hidden" id="upload-preview-container">
+                    <div class="preview-container">
+                        <img id="preview-image" src="" alt="Preview">
+                    </div>
+                    <div class="button-group">
+                        <button id="change-image-btn" class="btn secondary-btn">Change Image</button>
+                        <button id="continue-btn" class="btn primary-btn">Continue</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Edit Screen -->
+        <div id="edit-screen" class="screen">
+            <div class="edit-container">
+                <div class="edit-panel card" id="edit-panel">
+                    <h2>Transform Your Image</h2>
+                    <div class="form-group">
+                        <label for="instruction">Instruction</label>
+                        <textarea id="instruction" placeholder="e.g., 'make him smile and seem happy'" rows="3"></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label for="guidance-scale">
+                            Guidance Scale: <span id="guidance-scale-value">12</span>
+                        </label>
+                        <input type="range" id="guidance-scale" min="1" max="20" value="12" step="0.1">
+                        <div class="slider-labels">
+                            <span>1</span>
+                            <span>20</span>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="inference-steps">
+                            Inference Steps: <span id="inference-steps-value">50</span>
+                        </label>
+                        <input type="range" id="inference-steps" min="10" max="100" value="50" step="1">
+                        <div class="slider-labels">
+                            <span>10</span>
+                            <span>100</span>
+                        </div>
+                    </div>
+                    <div class="form-actions">
+                        <button id="back-btn" class="btn secondary-btn">Back</button>
+                        <button id="generate-btn" class="btn primary-btn" disabled>Generate</button>
+                    </div>
+                </div>
+
+                <div class="results-panel card hidden" id="results-panel">
+                    <div class="loading-container" id="loading-container">
+                        <div class="spinner"></div>
+                        <div class="progress-container">
+                            <div class="progress-bar">
+                                <div class="progress-fill" id="progress-fill"></div>
+                            </div>
+                            <span id="progress-text">Processing... 0%</span>
+                        </div>
+                    </div>
+                    <div class="results-content hidden" id="results-content">
+                        <h3>Result</h3>
+                        <div class="result-container">
+                            <img id="result-image" src="" alt="Generated image">
+                        </div>
+                        <div class="metrics">
+                            <div class="metric">
+                                <span class="metric-label">SSIM:</span>
+                                <span id="ssim-value" class="metric-value">-</span>
+                            </div>
+                            <div class="metric">
+                                <span class="metric-label">PSNR:</span>
+                                <span id="psnr-value" class="metric-value">-</span>
+                            </div>
+                        </div>
+                        <div class="button-group">
+                            <button id="download-btn" class="btn secondary-btn">Download</button>
+                            <button id="new-edit-btn" class="btn primary-btn">New Edit</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="/static/script.js"></script>
+</body>
+</html>
